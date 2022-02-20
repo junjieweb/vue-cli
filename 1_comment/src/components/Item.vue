@@ -1,26 +1,58 @@
 <template>
   <li class="list-group-item">
     <div class="handle">
-      <a href="javascript:;">删除</a>
+      <a href="javascript:;" @click="deleteC">删除</a>
     </div>
-    <p class="user"><span>yyy</span><span>说:</span></p>
-    <p class="centence">Vue有点难!</p>
+    <p class="user"><span>{{ comment.username }}</span><span>说:</span></p>
+    <p class="centence">{{ comment.content }}</p>
   </li>
 </template>
 
 <script>
 export default {
   name: "Item",
-
-  data() {
-    return {};
+  props: {
+    comment: Object,
+    deleteContent: Function,
+    index: Number
   },
-
-  mounted() {},
-
-  methods: {},
+  methods: {
+    deleteC(index) {
+      if (confirm('确认删除吗？')) {
+        this.deleteContent(index)
+      }
+    }
+  }
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+
+li {
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.handle {
+  width: 40px;
+  border: 1px solid #ccc;
+  background: #fff;
+  position: absolute;
+  right: 10px;
+  top: 1px;
+  text-align: center;
+}
+
+.handle a {
+  display: block;
+  text-decoration: none;
+}
+
+.list-group-item .centence {
+  padding: 0 50px;
+}
+
+.user {
+  font-size: 22px;
+}
 </style>

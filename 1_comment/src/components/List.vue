@@ -3,7 +3,13 @@
     <h3 class="reply">评论回复：</h3>
     <h2 style="display: none">暂无评论，点击左侧添加评论！！！</h2>
     <ul class="list-group">
-      <Item></Item>
+      <Item
+        v-for="(comment,index) in comments"
+        :key="comment.id"
+        :comment="comment"
+        :index="index"
+        :deleteContent="deleteContent"
+      ></Item>
     </ul>
   </div>
 </template>
@@ -13,15 +19,12 @@ import Item from '@/components/Item';
 export default {
   name: "List",
   components:{Item},
-  data() {
-    return {};
-  },
-
-  mounted() {},
-
-  methods: {},
+  props:['comments','deleteContent'],
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.reply {
+  margin-top: 0;
+}
 </style>

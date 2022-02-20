@@ -13,16 +13,8 @@
 <script>
 export default {
   name: "Header",
-
-  data() {
-    return {};
-  },
-
-  mounted() {},
-
-  methods: {},
 };
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 </style>
